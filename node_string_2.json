@@ -1,0 +1,165 @@
+{
+  "activeSheet": "Food Order",
+  "sheets": [
+    {
+      "name": "Sheet1",
+      "rows": [
+        {
+          "index": 0,
+          "cells": [
+            {
+              "value": "view the version of the Node package ",
+              "index": 0
+            },
+            {
+              "value": "npm view underscore versions",
+              "index": 3
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "cells": [
+            {
+              "value": "Install particular version of node ",
+              "index": 0
+            },
+            {
+              "value": "npm install @",
+              "index": 3
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "cells": [
+            {
+              "value": "Create package json",
+              "index": 0
+            },
+            {
+              "value": "npm init",
+              "index": 3
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "cells": [
+            {
+              "value": "To save the dependency in the package json",
+              "index": 0
+            },
+            {
+              "value": "npm install --save",
+              "index": 3
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "cells": [
+            {
+              "value": "Check if any of the current packagehas gone outdated",
+              "index": 0
+            },
+            {
+              "value": "npm outdated ",
+              "index": 3
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "cells": [
+            {
+              "value": "update all packages",
+              "index": 0
+            },
+            {
+              "value": "npm update",
+              "index": 3
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "cells": [
+            {
+              "value": "update certain package",
+              "index": 0
+            },
+            {
+              "value": "npm update ",
+              "index": 3
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "cells": [
+            {
+              "value": "List available packages in the local folder",
+              "index": 0
+            },
+            {
+              "value": "npm list",
+              "index": 3
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "cells": [
+            {
+              "value": "Install a package globally",
+              "index": 0
+            },
+            {
+              "value": "npm install -g",
+              "index": 3
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "cells": [
+            {
+              "value": "List available packages available globally",
+              "index": 0
+            },
+            {
+              "value": "npm list -g",
+              "index": 3
+            }
+          ]
+        }
+      ],
+      "columns": [
+        {
+          "index": 0,
+          "width": 343
+        },
+        {
+          "index": 3,
+          "width": 294
+        }
+      ],
+      "selection": "D8:D8",
+      "activeCell": "D8:D8",
+      "frozenRows": 0,
+      "frozenColumns": 0,
+      "showGridLines": true,
+      "gridLinesColor": null,
+      "mergedCells": [],
+      "hyperlinks": [],
+      "defaultCellStyle": {
+        "fontFamily": "Arial",
+        "fontSize": "12"
+      }
+    }
+  ],
+  "names": [],
+  "columnWidth": 64,
+  "rowHeight": 20
+}

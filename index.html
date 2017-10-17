@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <form id="myForm" name="myForm" enctype="multipart/form-data" method="post">
+        <input type="file" id="myFile" name="myFile">
+        <input id="mybutton" type="submit" name="submit" value = "GenerateJson">
+        </form>
+    <textarea id = "jsonDiv" height = "800px" width = "800px">
+    </textarea>
+    </div>
+
+</head>
+<script>
+    var form = document.forms.namedItem("myForm");
+    form.addEventListener("submit", function (event) {
+        console.log("Kapil: Submit pressed: " + Date.now());
+        var file = document.getElementById("myFile").files[0];
+        var data = new FormData(form);
+        var req = new XMLHttpRequest();
+        req.open("POST", "/upload", true);
+        req.onload = function(resp){
+            console.log(resp);
+            if(req.status == 200 ){
+                // console.log(req.response)
+                console.log("Kapil: JSON Received: " + Date.now());
+                document.getElementById("jsonDiv").value = req.response                
+            }
+        }
+        req.send(data);
+        event.preventDefault();
+    }, false)
+
+</script>
+
+</html>
