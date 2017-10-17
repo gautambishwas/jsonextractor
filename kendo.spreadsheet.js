@@ -6399,7 +6399,7 @@ module.exports = function (jQuery, window) {
         function compileArgumentChecks(functionName, args) {
             var arrayArgs = 'function arrayArgs(args) { var xargs = [], width = 0, height = 0, arrays = [], i = 0; ';
             var resolve = 'function resolve(args, callback) { var toResolve = [], i = 0; ';
-            var name, forced, main = '\'use strict\'; function check(args) { var stack = [], tmp, xargs = [], i = 0, m, err = \'VALUE\'; ', haveForced = false;
+            var name, forced, main = '\'use strict\'; function check(args) { var stack = [], tmp, xargs = [], kendo = kendo ,i = 0, m, err = \'VALUE\'; ', haveForced = false;
             var canBeArrayArg = false, hasArrayArgs = false;
             main += args.map(comp).join('');
             main += 'if (i < args.length) return new CalcError(\'N/A\'); ';
@@ -6495,7 +6495,7 @@ module.exports = function (jQuery, window) {
                 return '($' + name + ' = this.force($' + name + '))';
             }
             function forceNum(round) {
-                return '(' + (round ? '(typeof ' + force() + ' == \'number\' ? ($' + name + ' = round($' + name + '), true) : false) || ' : '(typeof ' + force() + ' == \'number\') || ') + '(typeof $' + name + ' == \'boolean\') || ' + '(typeof $' + name + ' == \'string\' && !/^(?:=|true|false)/i.test($' + name + ') ? (' + 'tmp = kendo.spreadsheet.calc.parse(0, 0, 0, $' + name + '), ' + '/^date|number|percent$/.test(tmp.type) ? ($' + name + ' = +tmp.value, true) : false' + ') : false)' + ')';
+                return '(' + (round ? '(typeof ' + force() + ' == \'number\' ? ($' + name + ' = round($' + name + '), true) : false) || ' : '(typeof ' + force() + ' == \'number\') || ') + '(typeof $' + name + ' == \'boolean\') || ' + '(typeof $' + name + ' == \'string\' && !/^(?:=|true|false)/i.test($' + name + ') ? (' + 'tmp = global.window.kendo.spreadsheet.calc.parse(0, 0, 0, $' + name + '), ' + '/^date|number|percent$/.test(tmp.type) ? ($' + name + ' = +tmp.value, true) : false' + ') : false)' + ')';
             }
             function typeCheck(type, allowError) {
                 forced = false;
@@ -10817,7 +10817,7 @@ module.exports = function (jQuery, window) {
             }
             ready.then(function () {
                 console.log(wkbook);
-                console.log(wkbook.toJSON())
+                // console.log(wkbook.toJSON())
                 var json = { "resolveParams": wkbook.toJSON() }
                 progress.resolve(json);
             });

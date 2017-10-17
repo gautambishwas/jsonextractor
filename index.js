@@ -2,12 +2,13 @@ var jsdom = require("jsdom").JSDOM;
 var window = new jsdom().window;
 var jQuery = $ = require("jquery")(window)
 var document = window.document;
-
+global.window = window;
 
 module.exports = class XlJson {
 
     constructor(zip) {
         var kendo = require("./kendo.spreadsheet.js")(jQuery, window);
+        // global.kendo = window.kendo;
         return this.getZipFile(zip, kendo);
     }
 
