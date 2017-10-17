@@ -4,7 +4,7 @@
   "description": "kendo Xml to json",
   "main": "index.js",
  "scripts": {
-  "start": "node index.js"
+  "start": "node app.js"
   },
   "dependencies": {
     "File": "^0.10.2",
