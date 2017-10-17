@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "kendo Xml to json",
   "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "File": "^0.10.2",
     "body-parser": "^1.17.2",
