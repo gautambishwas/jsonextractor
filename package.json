@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "kendo Xml to json",
   "main": "index.js",
-  "scripts": {
-    "start": "node app.js"
+ "scripts": {
+  "start": "node app.js"
   },
   "dependencies": {
     "File": "^0.10.2",
@@ -17,9 +17,7 @@
     "multer": "^1.3.0"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  
   "author": "",
   "license": "MIT"
 }
