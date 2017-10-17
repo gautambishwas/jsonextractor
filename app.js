@@ -30,7 +30,7 @@ app.post("/upload", function (req, res) {
             var reader = new FileReader();
             var JSZip = require("jszip")
 
-            var File = require("file");
+            var File = require("File");
             res.req.file.name = req.file.originalname;
             reader.readAsDataURL(new File(res.req.file));
             reader.on('data', function (data) {
