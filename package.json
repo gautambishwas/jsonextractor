@@ -1,12 +1,12 @@
 {
   "name": "comproDLS",
   "description": "Copyright Compro Technologies 2016/17",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "clean": "npm run rimraf -- dist compiled dll",
-    "postinstall": "npm run build:aot",
+    
     "postinstallold": "npm run clean:bower && bower install && npm run build:aot",
-    "build": "npm run clean:dist && webpack --config config/webpack.prod.js  --progress --profile --bail",
+  
     "start": "node app.js",
     "start:dev": "nodemon",
     "start:hmr": "npm run server:dev:hmr",
