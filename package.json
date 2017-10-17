@@ -1,7 +1,7 @@
 {
   "name": "comproDLS",
   "description": "Copyright Compro Technologies 2016/17",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "clean": "npm run rimraf -- dist compiled dll",
     
