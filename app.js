@@ -5,6 +5,7 @@ var multer = require("multer");
 var xlJson = require("./index.js")
 const port = process.env.PORT || 3000;
 app.set('port', port);
+app.listen(port);
 console.log("listening on port 3000");
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, './index.html'));
