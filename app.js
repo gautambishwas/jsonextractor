@@ -3,6 +3,7 @@ var path = require("path")
 var app = express();
 var multer = require("multer");
 var xlJson = require("./index.js")
+var fs = require("fs");
 const port = process.env.PORT || 3000;
 app.set('port', port);
 app.listen(port);
@@ -10,6 +11,29 @@ console.log("listening on port 3000");
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, './index.html'));
 })
+
+
+
+
+/* benchmarking apis start: Only temporary*/
+app.get("/display", function (req, res) {
+    console.log("req received");
+    fs.readFile("./" + req.query.param + ".json", "utf8", function (err, data) {
+        res.send(data);
+    });
+
+})
+
+app.get("/download", function (req, res) {
+    console.log("req received");
+    fs.readFile("./" + req.query.param + ".json", "utf8", function (err, data) {
+        responseObj = { fileContent: data, fileName: req.query.param + ".json" }
+        res.send(responseObj);
+    });
+
+})
+/* benchmarking apis end: Only temporary*/
+
 
 var storage = multer.diskStorage({
     destination: function (req, res, callback) {

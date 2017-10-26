@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
     <style>
-        #jsonFetcherContainer{
+        #jsonFetcherContainer {
             margin: 50px;
         }
     </style>
 
 </head>
+
+<body>
+
+    <form id="myForm" name="myForm" enctype="multipart/form-data" method="post">
+        <input type="file" id="myFile" name="myFile">
+        <input id="mybutton" type="submit" name="submit" value="GenerateJson">
+    </form>
+    <textarea id="jsonDiv" height="800px" width="800px">
+        </textarea>
+
+
+    <!-- code for benchmarking only: temporary code start -->
+
+    <div id="jsonFetcherContainer">
+        <form id="jsonFetcher" name="jsonFetcherForm" enctype="multipart/form-data" method="get">
+            <label>Select the JSON name to be fetched: </label><br>
+            <input type="radio" name="jsonType" value="built_in_style">built_in_style<br>
+            <input type="radio" name="jsonType" value="style_enum">style_enum<br>
+            <input id="fetchJsonBtn" type="button" name="Fetch JSON" value="FetchJson">
+            <input id="dwnldJsonBtn" type="button" name="Fetch JSON" value="Download Json">
+        </form>
+        <!--code for benchmarking only: temporary code end -->
+    </div>
+</body>
 <script>
     var form = document.forms.namedItem("myForm");
     form.addEventListener("submit", function (event) {
@@ -17,58 +42,71 @@
         var data = new FormData(form);
         var req = new XMLHttpRequest();
         req.open("POST", "/upload", true);
-        req.onload = function(resp){
+        req.onload = function (resp) {
             console.log(resp);
-            if(req.status == 200 ){
-                // console.log(req.response)
-                console.log("Kapil: JSON Received: " + Date.now());
-                document.getElementById("jsonDiv").value = req.response                
-            }
-        }
-        req.send(data);
-        event.preventDefault();
-    }, false);
-
-
-    var fetchJSONForm = document.forms.namedItem("jsonFetcherForm");
-    fetchJSONForm.addEventListener("submit", function (event) {
-        console.log("Fetch JSON pressed: " + Date.now());
-        var data = new FormData(form);
-        var req = new XMLHttpRequest();
-        req.open("GET", "/download", true);
-        req.onload = function(resp){
-            console.log(resp);
-            if(req.status == 200 ){
-                // console.log(req.response)
+            if (req.status == 200) {
                 console.log("Kapil: JSON Received: " + Date.now());
                 document.getElementById("jsonDiv").value = req.response
             }
         }
         req.send(data);
         event.preventDefault();
+    }, false);
+
+/* benchmarking requests:temporary code start*/
+    document.querySelector("#fetchJsonBtn").addEventListener("click", function (event) {
+        console.log("Display Dummy JSON pressed: " + Date.now());
+        var selectedVal = document.querySelector('input[name=\"jsonType\"]:checked')
+        if (selectedVal) {
+            var req = new XMLHttpRequest();
+            var url = "/display" + "?param=" + selectedVal.value;
+            req.open("GET", url);
+            req.onload = function (resp) {
+                if (req.status == 200) {
+                    console.log("JSON Received for Display: " + Date.now());
+                    document.getElementById("jsonDiv").value = req.response;
+                }
+            }
+            req.send();
+            event.preventDefault();
+        }
+        else {
+            window.alert("Select an item from radio");
+        }
     }, false)
 
+
+
+    document.querySelector("#dwnldJsonBtn").addEventListener("click", function (event) {
+        console.log("Download Dummy JSON pressed: " + Date.now());
+
+        var req = new XMLHttpRequest();
+        var selectedVal = document.querySelector('input[name=\"jsonType\"]:checked');
+        if (selectedVal) {
+            var url = "/download" + "?param=" + selectedVal.value;
+            req.open("GET", url);
+            req.onload = function (resp) {
+                if (req.status == 200) {
+                    console.log("JSON Received for Downloading: " + Date.now());
+                    var data = JSON.parse(req.response);
+                    var anchor = document.createElement("a");
+                    anchor.download = data.fileName + ".json"
+                    anchor.href = 'data:text/html;charset=utf-8,'
+                        + encodeURIComponent(data.fileContent);
+                    console.log("response received: initiating download" + Date.now());
+                    anchor.click();
+                }
+            }
+            req.send();
+            event.preventDefault();
+        }
+        else {
+            window.alert("Select an item from radio");
+        }
+    }, false)
+/* benchmarking requests:temporary code start*/
 </script>
 
-<body>
 
-    <form id="myForm" name="myForm" enctype="multipart/form-data" method="post">
-        <input type="file" id="myFile" name="myFile">
-        <input id="mybutton" type="submit" name="submit" value = "GenerateJson">
-    </form>
-    <textarea id = "jsonDiv" height = "800px" width = "800px">
-    </textarea>
-
-    <div id="jsonFetcherContainer" >
-        <form id="jsonFetcher" name="jsonFetcherForm" enctype="multipart/form-data" method="get">
-            <label>Select the JSON name to be fetched: </label><br>
-            <input type="radio" name="jsonType" value="node_string"> node_string<br>
-            <input type="radio" name="jsonType" value="node_string_2"> node_string_2<br>
-            <input type="radio" name="jsonType" value="package"> package<br>
-            <input id="fetchJsonBtn" type="submit" name="Fetch JSON" value = "FetchJson">
-        </form>
-
-    </div>
-</body>
 
 </html>
