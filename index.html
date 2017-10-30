@@ -30,9 +30,10 @@
             <input type="radio" name="jsonType" value="built_in_style">built_in_style
             <br>
             <input type="radio" name="jsonType" value="style_enum">style_enum
-            <br>
+            <br/>
+            <br/>
             <input id="fetchJsonBtn" type="button" name="Fetch JSON" value="FetchJson">
-            <input id="dwnldJsonBtn" type="button" name="Fetch JSON" value="Download Json">
+            <!-- <input id="dwnldJsonBtn" type="button" name="Fetch JSON" value="Download Json"> -->
         </form>
         <!--code for benchmarking only: temporary code end -->
     </div>
@@ -80,36 +81,36 @@
     }, false)
 
 
+// disabling it for now
+    // document.querySelector("#dwnldJsonBtn").addEventListener("click", function (event) {
+    //     var startTime = Date.now()
+    //     console.log("Download Dummy JSON pressed: " + startTime);
 
-    document.querySelector("#dwnldJsonBtn").addEventListener("click", function (event) {
-        var startTime = Date.now()
-        console.log("Download Dummy JSON pressed: " + startTime);
 
-
-        var req = new XMLHttpRequest();
-        var selectedVal = document.querySelector('input[name=\"jsonType\"]:checked');
-        if (selectedVal) {
-            var url = "/download" + "?param=" + selectedVal.value;
-            req.open("GET", url);
-            req.onload = function (resp) {
-                if (req.status == 200) {
-                    console.log("JSON Received for Downloading: " + Date.now());
-                    var data = JSON.parse(req.response);
-                    var anchor = document.createElement("a");
-                    anchor.download = data.fileName + ".json"
-                    anchor.href = 'data:text/html;charset=utf-8,'
-                        + encodeURIComponent(data.fileContent);
-                    console.log("response received: time Elapsed (without Gzip): " + (Date.now() - startTime) + " ms");
-                    anchor.click();
-                }
-            }
-            req.send();
-            event.preventDefault();
-        }
-        else {
-            window.alert("Select an item from radio");
-        }
-    }, false)
+    //     var req = new XMLHttpRequest();
+    //     var selectedVal = document.querySelector('input[name=\"jsonType\"]:checked');
+    //     if (selectedVal) {
+    //         var url = "/download" + "?param=" + selectedVal.value;
+    //         req.open("GET", url);
+    //         req.onload = function (resp) {
+    //             if (req.status == 200) {
+    //                 console.log("JSON Received for Downloading: " + Date.now());
+    //                 var data = JSON.parse(req.response);
+    //                 var anchor = document.createElement("a");
+    //                 anchor.download = data.fileName + ".json"
+    //                 anchor.href = 'data:text/html;charset=utf-8,'
+    //                     + encodeURIComponent(data.fileContent);
+    //                 console.log("response received: time Elapsed (without Gzip): " + (Date.now() - startTime) + " ms");
+    //                 anchor.click();
+    //             }
+    //         }
+    //         req.send();
+    //         event.preventDefault();
+    //     }
+    //     else {
+    //         window.alert("Select an item from radio");
+    //     }
+    // }, false)
 /* benchmarking requests:temporary code start*/
 </script>
 
