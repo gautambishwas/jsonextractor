@@ -67,7 +67,7 @@
             req.open("GET", url);
             req.onload = function (resp) {
                 if (req.status == 200) {
-                    console.log("response received: time Elapsed (with Gzip): " + (Date.now() - startTime) + " ms");
+                    console.log("response received: time Elapsed (without Gzip): " + (Date.now() - startTime) + " ms");
                     document.getElementById("jsonDiv").value = req.response;
                 }
             }
@@ -99,7 +99,7 @@
                     anchor.download = data.fileName + ".json"
                     anchor.href = 'data:text/html;charset=utf-8,'
                         + encodeURIComponent(data.fileContent);
-                    console.log("response received: time Elapsed (with Gzip): " + (Date.now() - startTime) + " ms");
+                    console.log("response received: time Elapsed (without Gzip): " + (Date.now() - startTime) + " ms");
                     anchor.click();
                 }
             }
